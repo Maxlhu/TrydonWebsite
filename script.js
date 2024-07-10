@@ -76,3 +76,21 @@ window.addEventListener("scroll", () => {
 ScrollReveal().reveal('.guide_description', { duration: 1000, distance: '500px' });
 ScrollReveal().reveal('.guide_image', { delay: 500, duration: 1000, distance: '500px' });
 // SCROLL REVEAL ENDS
+
+// function HandleCustomer() {
+//   const customer = document.getElementById("customer");
+//   const business = document.getElementById("business");
+//   business.classList.remove("selected");
+//   business.classList.add("unselected");
+//   customer.classList.remove("unselected");
+//   customer.classList.add("selected");
+// };
+
+// function HandleBusiness() {
+//   const customer = document.getElementById("customer");
+//   const business = document.getElementById("business");
+//   customer.classList.remove("selected");
+//   customer.classList.add("unselected");
+//   business.classList.remove("unselected");
+//   business.classList.add("selected");
+// };

@@ -73,31 +73,51 @@ header {
   height: 15vh;
   display: flex;
   justify-content: center;
-  position: absolute;
+  /* position: absolute; */
   top: 0;
-  z-index: 10000;
+  /* z-index: 10000; */
   user-select: none;
-  transition: top 200ms linear;
 }
 .header_content {
-  width: 91.67%;
+  width: 98%;
   height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .logo {
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   font-family: initial;
   font-weight: 700;
+  margin-left: 5%;
 }
 header nav {
   width: max(13rem, 16%); /* Thanks Kevin Powell for min, max and clamp, it has helped me improve by over 1% in my web design */
   display: flex;
   justify-content: space-between;
-  font-size: clamp(.7rem, .9vw, 2rem);
+  /* font-size: clamp(.7rem, .9vw, 2rem); */
   font-weight: 500;
 }
+
+header {
+  background: #2F473B;
+}
+
+.header_group_container {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  width: 20%;
+  max-width: 25%;
+  height: 100%;
+}
+
+.nav_link {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
 .nav_link:hover,
 .nav_link:focus {
   color: var(--accent);
@@ -107,12 +127,12 @@ header nav {
   align-items: center;
 }
 .account_icon svg {
-  width: clamp(.7rem + 6px, 1vw, 2rem);
+  width: clamp(1.7rem + 6px, 1vw, 2rem);
 }
 .account_text {
   margin-top: -4%;
   margin-left: 8%;
-  font-size: clamp(.7rem, .9vw, 2rem);
+  font-size: clamp(.9rem, .9vw, 2rem);
   position: relative;
   display: flex;
   justify-content: center;
@@ -446,7 +466,7 @@ header nav {
 footer {
   height: max(41.5%, 18rem);
   font-size: .8rem;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
   padding-top: 4rem;
   background: #2F473B;
 }

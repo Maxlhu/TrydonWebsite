@@ -6,6 +6,77 @@
   <link rel="stylesheet" href="styleAccount.css" />
   <title>TRYDON</title>
 </head>
+<script>
+  function HandleCustomer() {
+    const customer = document.getElementById("customer");
+    const business = document.getElementById("business");
+    business.classList.remove("selected");
+    business.classList.add("unselected");
+    customer.classList.remove("unselected");
+    customer.classList.add("selected");
+
+    document.getElementById("customer_message").style.display = "flex";
+    document.getElementById("form_container").style.display = "none";
+  };
+
+  function HandleBusiness() {
+    const customer = document.getElementById("customer");
+    const business = document.getElementById("business");
+    customer.classList.remove("selected");
+    customer.classList.add("unselected");
+    business.classList.remove("unselected");
+    business.classList.add("selected");
+
+    document.getElementById("customer_message").style.display = "none";
+    document.getElementById("form_container").style.display = "flex";
+  };
+
+  function submitForm() {
+    const form = document.getElementById("form_container");
+    var formData = {
+      name: document.getElementById("name").value,
+      company: document.getElementById("company").value,
+      mail: document.getElementById("mail").value,
+      clothesSold: document.getElementById("sold").value,
+      customersAmount: document.getElementById("customers").value,
+      websiteFramework: document.getElementById("language").value
+    };
+    fetch('https://trydon.ca/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData)
+    }).then(response => {
+      return response.json();
+    }).then(data => {
+      console.log(data);
+    }).catch(error => {
+      console.error('Error:', error);
+    });
+  }
+
+  function submitQuestion() {
+    const form = document.getElementById("information_form");
+    const question = {
+      question: form.value
+    }
+    fetch('https://trydon.ca/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(question)
+    }).then(response => {
+      return response.json();
+    }).then(data => {
+      console.log(data);
+    }).catch(error => {
+      console.error('Error:', error);
+    });
+  }
+</script>
+
 <div id="app">
   <header>
     <div class="header_content">
@@ -37,77 +108,80 @@
   <div class="mainMessageContainer">
     <div class="mainMessage">JOIN TRYDON</div>
     <div class="customerBusinessContainer">
-      <div class="customer">CUSTOMER</div>
-      <div class="business">BUSINESS</div>
+      <button id="customer" class="customer unselected" onclick="HandleCustomer()">CUSTOMER</button>
+      <button id="business" class="business selected" onclick="HandleBusiness()">BUSINESS</button>
     </div>
     <div id="form_container" style="width: 90%; display: flex; flex-direction: column; align-items: center;">
-    <div class="description">We'll need some information about your business to make TRYDON tailored for your business</div>
-    <div class="inputContainer">
-      <h2 class="label">First Name</h2>
-      <input class="input" placeholder="" />
-    </div>
-    <div class="inputContainer">
-      <h2 class="label">Company Name</h2>
-      <input class="input" placeholder="" />
-    </div>
-    <div class="inputContainer">
-      <h2 class="label">E-mail</h2>
-      <input class="input" placeholder="" />
-    </div>
-    <div class="flexContainer">
-      <div class="flexItem">
-        <h2 class="label">Garments sold online</h2>
-        <input class="input" type="number" placeholder=" Monthly amount (≃)" />
+      <div class="description">We'll need some information about your business to make TRYDON tailored for your business</div>
+      <div class="inputContainer">
+        <h2 class="label">First Name</h2>
+        <input id="name" class="input" placeholder="" />
       </div>
-      <div class="flexItem">
-        <h2 class="label">Online customers</h2>
-        <input class="input" type="number" placeholder=" Monthly amount (≃)" />
+      <div class="inputContainer">
+        <h2 class="label">Company Name</h2>
+        <input id="company" class="input" placeholder="" />
       </div>
+      <div class="inputContainer">
+        <h2 class="label">E-mail</h2>
+        <input id="mail" class="input" placeholder="" />
+      </div>
+      <div class="flexContainer">
+        <div class="flexItem">
+          <h2 class="label">Garments sold online</h2>
+          <input id="sold" class="input" type="number" placeholder=" Monthly amount (≃)" />
+        </div>
+        <div class="flexItem">
+          <h2 class="label">Online customers</h2>
+          <input id="customers" class="input" type="number" placeholder=" Monthly amount (≃)" />
+        </div>
+      </div>
+      <div class="inputContainer">
+        <h2 class="label">How is your website made</h2>
+        <select id="language" class="select">
+          <option value="choose">-Choose-</option>
+          <option value="Angular">Home-made (Angular)</option>
+          <option value="React">Home-made (React)</option>
+          <option value="Home-made">Home-made (Other)</option>
+          <option value="Shopify">Shopify</option>
+          <option value="Wix">Wix</option>
+          <option value="BlueHost">BlueHost</option>
+          <option value="Squarespace">Squarespace</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <button onclick="submitForm()" class="getPrice">GET YOUR PRICE</button>
+      <div style="width: 80%; height: 100px; border-bottom: 1px solid #DAD7CD;"></div>
     </div>
-    <div class="inputContainer">
-      <h2 class="label">How is your website made</h2>
-      <select class="select">
-        <option value="choose">-Choose-</option>
-        <option value="Angular">Home-made (Angular)</option>
-        <option value="React">Home-made (React)</option>
-        <option value="Home-made">Home-made (Other)</option>
-        <option value="Shopify">Shopify</option>
-        <option value="Wix">Wix</option>
-        <option value="BlueHost">BlueHost</option>
-        <option value="Squarespace">Squarespace</option>
-        <option value="Other">Other</option>
-      </select>
-    </div>
-    <div class="getPrice">GET YOUR PRICE</div>
-    <div style="width: 80%; height: 100px; border-bottom: 1px solid #DAD7CD;"></div>
+    <div id="customer_message" style="width: 90%; height: 70vh; display: none; flex-direction: column; justify-content: center; align-items: center;"> 
+      <h1 style="margin-bottom: 7vh;">A whole new mobile app tailored for you is incoming</h1>
+      <h3>If you have any question about Trydon you can write to us :</h3>
+      <textarea id="information_form" type="text" style="height: 30vh; width: 50%; border-radius: 10px; margin-top: 2vh; opacity: 0.8; padding: 4px;"></textarea>
+      <button onclick="submitQuestion()" class="submit-button"> SUBMIT </button>
     </div>
     
   </div>
 </body>
-  <footer>
-    <div class="footer_content container">
-      <div class="footer_description">
-        <div class="footer_logo">TRYDON</div>
-        <div class="footer_text">Discover the future of online shopping!</div>
-        <div class="copyright"></div>
+<footer>
+  <div class="footer_content container">
+    <div class="footer_description">
+      <div class="footer_logo">TRYDON</div>
+      <div class="footer_text">Discover the future of online shopping!</div>
+      <div class="copyright"></div>
+    </div>
+    <div class="footer_links">
+      <div class="footer_blog-links">
+        <h3>More on Trydon</h3>
+        <a href="#" class="footer_link">About Trydon</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSc9Q6yTXSphbxkmm0PPS0e4yKKSUv7jRMTMX5hUCy7Je8xO9A/viewform" class="footer_mntn-links">Help Us</a>
       </div>
-      <div class="footer_links">
-        <div class="footer_blog-links">
-          <h3>More on Trydon</h3>
-          <a href="#" class="footer_link">About Trydon</a>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSc9Q6yTXSphbxkmm0PPS0e4yKKSUv7jRMTMX5hUCy7Je8xO9A/viewform" class="footer_link">Help Us</a>
-          <a href="https://www.linkedin.com/company/trydonapp" class="footer_link">Contact Us</a>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSc9Q6yTXSphbxkmm0PPS0e4yKKSUv7jRMTMX5hUCy7Je8xO9A/viewform" class="footer_link">Privacy Policy</a>
-          <a href="#" class="footer_link"></a>
-        </div>
-        <div class="footer_mntn-links">
-          <h3>More on Us</h3>
-          <a href="https://www.linkedin.com/company/trydonapp" class="footer_link">The Team</a>
-          <a href="https://www.linkedin.com/company/trydonapp" class="footer_link">History</a>
-          <a href="#" class="footer_link"></a>
-        </div>
+      <div class="footer_mntn-links">
+        <h3>More on Us</h3>
+        <a href="mailto:trydon.app@gmail.com" class="footer_link">trydon.app@gmail.com</a>
+        <a href="https://www.linkedin.com/company/trydonapp" class="footer_link">Linkedin</a>
+        <a href="#" class="footer_link"></a>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
 </div>
 </html> 
