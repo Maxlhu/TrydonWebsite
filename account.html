@@ -41,7 +41,7 @@
       customersAmount: document.getElementById("customers").value,
       websiteFramework: document.getElementById("language").value
     };
-    fetch('https://trydon.ca/send-email', {
+    fetch('http://18.223.235.230:80/send-email', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -61,7 +61,7 @@
     const question = {
       question: form.value
     }
-    fetch('https://trydon.ca/send-email', {
+    fetch('http://18.223.235.230:80/send-email', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
