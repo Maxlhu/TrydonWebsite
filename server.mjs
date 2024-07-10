@@ -6,7 +6,7 @@ const require = createRequire(import.meta.url);
 const Mailjet = require('node-mailjet')
 
 const app = express();
-const port = 3000;
+const port = 80;
 
 app.use(cors());
 
