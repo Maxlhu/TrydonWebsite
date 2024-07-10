@@ -4,9 +4,14 @@ import cors from "cors";
 
 const require = createRequire(import.meta.url);
 const Mailjet = require('node-mailjet')
+const https = require('https');
 
 const app = express();
-const port = 443;
+const port = 80;
+
+https.createServer(options, app).listen(443, () => {
+  console.log('Server is running on port 443');
+});
 
 app.use(cors());
 
