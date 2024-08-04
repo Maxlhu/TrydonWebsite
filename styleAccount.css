@@ -1,8 +1,17 @@
 :root {
-  --main-color: #344E41;
+  --main-color: #4f4d92;
   --main-color-bb: #0B1D26bb;
   --main-color-00: #0B1D2600;
-  --accent: #DAD7CD;
+  --accent: white;
+  --content-text-color: #000000a3;
+  --bg-color: linear-gradient(210.12deg, 
+  #5cabdf 0%, 
+  #5daade 0%, 
+  #65a4d9 13%, 
+  #7d94ce 34%, 
+  #a479bc 59%, 
+  #d955a3 89%, 
+  #ee489a 100%);
 }
 *, *::before, *::after {
   margin: 0;
@@ -17,7 +26,7 @@ html, body {
 }
 body {
   /* background: linear-gradient(145deg, var(--main-color-bb), var(--main-color)); */
-  background: (145deg, var(--main-color-bb), var(--main-color-00));
+  background: var(--bg-color) no-repeat fixed;
   /* color: #fff; */
   color: var(--accent);
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -101,7 +110,7 @@ header nav {
 }
 
 header {
-  background: #2F473B;
+  background: transparent;
 }
 
 .nav_link {
@@ -166,15 +175,20 @@ header {
 .mainMessageContainer {
   display: flex;
   flex-direction: column;
-  background: (145deg, var(--main-color-bb), var(--main-color-00));
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px 1px;
+  border-radius: 5px;
   /* justify-content: center; */
   align-items: center;
   height: auto;
-  width: 98vw;
+  width: 80vw;
+  margin: auto;
+  margin-top: 2em;
+  margin-bottom: 5em;
 }
 
 .mainMessage {
-  color: var(--accent);
+  color: var(--content-text-color);
   font-size: 50px;
 }
 
@@ -196,7 +210,7 @@ header {
   align-items: center;
   height: 10%;
   width: 20%;
-  border: 2px solid var(--accent);
+  border: 2px solid var(--content-text-color);
 }
 
  body {
@@ -263,7 +277,7 @@ header {
   margin-top: 20px;
   margin-bottom: 30px;
   font-size: 1.25rem; /* Equivalent to text-xl in Tailwind */
-  color: var(--accent);
+  color: var(--content-text-color);
 }
 
 .inputContainer {
@@ -273,7 +287,7 @@ header {
 }
 
 .label {
-  color: var(--accent);
+  color: var(--content-text-color);
 }
 
 .input {
@@ -322,6 +336,11 @@ header {
   color: var(--main-color);
   font-size: 1.25rem; /* Equivalent to text-xl in Tailwind */
   font-weight: 600; /* Equivalent to font-semibold in Tailwind */
+  margin-bottom: 1em;
+}
+
+#customer_message {
+  color: var(--content-text-color)
 }
 
 #app {
@@ -350,7 +369,7 @@ footer {
   font-size: .8rem;
   padding-bottom: 1rem;
   padding-top: 4rem;
-  background: #2F473B;
+  background: rgba(0, 0, 0, 0.6);
 }
 .footer_content {
   height: 100%;
