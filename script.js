@@ -65,16 +65,16 @@ window.addEventListener("scroll", () => {
   if (value > 350) {
     header.style.top = 0;
   }
-  heroBG1.style.top = `-${value / 3}px`;
-  heroBG4.style.top = `${value / 8}px`;
-  heroBG4.style.left = `-${value / 5.5}px`;
+  // heroBG1.style.top = `-${value / 3}px`;
+  // heroBG4.style.top = `${value / 8}px`;
+  // heroBG4.style.left = `-${value / 5.5}px`;
   heroText.style.transform = `translateY(${value / 1.5}px)`;
 });
 // PARALLAX SCROLLING ENDS
 
 // SCROLL REVEAL STARTS
-ScrollReveal().reveal('.guide_description', { duration: 1000, distance: '500px' });
-ScrollReveal().reveal('.guide_image', { delay: 500, duration: 1000, distance: '500px' });
+// ScrollReveal().reveal('.guide_description', { duration: 1000, distance: '500px' });
+// ScrollReveal().reveal('.guide_image', { delay: 500, duration: 1000, distance: '500px' });
 // SCROLL REVEAL ENDS
 
 // function HandleCustomer() {
@@ -94,3 +94,7 @@ ScrollReveal().reveal('.guide_image', { delay: 500, duration: 1000, distance: '5
 //   business.classList.remove("unselected");
 //   business.classList.add("selected");
 // };
+
+const scrollToFirstSection = () => {
+  document.querySelector(".guides").scrollIntoView();
+}
